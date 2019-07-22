@@ -1,12 +1,99 @@
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Welcome to My GitHub Pages</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  <title>Screen Size Checker</title>
+  <link rel="stylesheet" type="text/css" href="styles/app.css">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white">
+  <meta name="apple-mobile-web-app-title" content="Temp Converter">
+  <link rel="apple-touch-icon" href="icons/icon-152x152.png">
 </head>
 <body>
-<h1>Hello GitHub Pages</h1>
-<div>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2215.4859252994515!2d140.85464956359536!3d38.25235747006234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2842e1ffaaab%3A0x6c0546528d2ed132!2z5LyK6YGU5pS_5a6X6aiO6aas5YOP!5e0!3m2!1sja!2sjp!4v1563778367904!5m2!1sja!2sjp" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-</div>
+
+  <header class="app-header">
+    <h1 class="header-title">INF : Screen Size Checker-N</h1>
+  </header>
+
+  <main class="app-main">
+    <div class="content-row">
+       <div class="column-full">
+        <label>画面インチ（対角）</label>
+        <input id="screeninchInput" class="number-input" type="number" min="3" placeholder="画面インチ数を入力">
+      </div>
+      <form name="rdform" class="column-full">
+      	<p class="samplerd">
+    		<input type="radio" id="rdnone" name="rdgroup" value="none" onchange="rdchange()"  checked="checked"/>
+    		<label for="rd-none">値入力</label>
+    		<input type="radio" id="rdHD" name="rdgroup" value="HD" onchange="rdchange()"  />
+    		<label for="rd-HD">フルHD</label>
+    		<input type="radio" id="rd4K" name="rdgroup" value="forK" onchange="rdchange()"  />
+    		<label for="rd-4K">4K</label>
+     		<input type="radio" id="rdipad3" name="rdgroup" value="ipad3" onchange="rdchange()"  />
+    		<label for="rdipad3">iPad3/4/Air</label>
+    	</p>
+    	<p  class="samplerd">
+    		<input type="radio" id="rdip8" name="rdgroup" value="ip8" onchange="rdchange()"/>
+    		<label for="rdip8">iPhone8</label>
+    	    <input type="radio" id="rdip8P" name="rdgroup" value="ip8P" onchange="rdchange()"/>
+    		<label for="rdip8P">iPhone8Pls</label>
+    		<input type="radio" id="rdip8X" name="rdgroup" value="ip8X" onchange="rdchange()"  />
+    		<label for="rdip8X">iPhoneX/XS</label>
+    	</p>
+	  </form>
+      <div class="column-half">
+        <label>横ピクセル</label>
+        <input id="widthpixInput" class="number-input" type="number" min="480" placeholder="横ピクセルを入力">
+      </div>
+      <div class="column-half">
+        <label>縦ピクセル</label>
+        <input id="heightpixInput" class="number-input" type="number" min="600" placeholder="縦ピクセルを入力">
+      </div>
+      <div class="mybuttons">
+		  <input type="button" id = "culcbtn" value="計算" /> 
+		  <input type="button" id = "clrbtn" value="クリア" /> 
+	  </div>
+	</div>
+	<div>
+		<div class="result-row">
+			<label>横　：</label><label id="widthcm"  class="result-label"></label>
+		</div>
+		<div class="result-row">
+			<label>縦　：</label><label id="heightcm"  class="result-label"></label>
+		</div>
+		<div class="result-row">
+			<label>対角：</label><label id="diagonal"  class="result-label"></label>
+		</div>
+
+	</div>
+	<div>
+		<p>【参考】色々な縦横（ｍｍ）</p>
+		<table class="memo">
+			<tr><td>畳（江戸間）</td><td>880 x 1760</td></tr>
+			<tr><td>新聞紙（見開き）</td><td>545 x 812</td></tr>
+			<tr><td>新聞紙（１ページ）</td><td>406 x 545</td></tr>
+			<tr><td>A4版</td><td>210 x 297</td></tr>
+			<tr><td>B5版(週刊誌)</td><td>182 x 257</td></tr>
+			<tr><td>新書版</td><td>103 x 182</td></tr> 
+			<tr><td>A6版(文庫本)</td><td>105 x 148</td></tr>
+		</table>
+	</div>
+
+  </main>
+
+  <script src="scripts/app.js" async></script>
+
+  <script type="application/javascript">
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('./serviceworker.js')
+        .then(function() {
+          console.log('Service Worker Registered');
+        });
+    }
+  </script>
+
 </body>
 </html>
